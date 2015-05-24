@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>clusterize.js test</title>
+        <link href="clusterize.css" rel="stylesheet">
+        <script src="clusterize.js"></script>
+        <style type="text/css">
+            .clusterize-scroll {
+                border: 1px solid #666;
+                -webkit-overflow-scrolling: touch;
+                height: 180px;
+                max-height: 180px;
+                position: relative;
+            }
+
+            .clusterize-scroll div:nth-child(2n) {
+                background-color: #ddd;
+            }
+
+            body {
+                font-size: 30px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="scrollArea" class="clusterize-scroll">
+            <div id="contentArea" class="clusterize-content">
+                <div class="clusterize-no-data">Loading data…</div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        var data = [];
+        for (var i = 0; i < 10000; i++) {
+            var row = '<div index='+ i +'>ahmet' + i + '</div>';
+
+            data.push(row);
+        }
+        var clusterize = new Clusterize({
+          rows: data,
+          scrollId: 'scrollArea',
+          contentId: 'contentArea',
+          rows_in_block: 10,
+          blocks_in_cluster: 2
+        });
+        </script>
+    </body>
+</html>
